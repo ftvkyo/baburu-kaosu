@@ -6,8 +6,7 @@
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
-
-[node name="Bubble" parent="." instance=ExtResource( 1 )]
+bubble_scene = ExtResource( 1 )
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 current = true
