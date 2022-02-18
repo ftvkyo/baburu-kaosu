@@ -11,12 +11,12 @@ config_version=4
 [application]
 
 config/name="baburu-kaosu"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Consts="*res://Consts.gd"
+Consts="*res://scripts/Consts.gd"
 
 [display]
 
