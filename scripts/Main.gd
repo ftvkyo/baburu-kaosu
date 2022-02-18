@@ -11,7 +11,10 @@ var current_bubble = 0
 func _ready():
 	randomize()
 
-	bubbles.push_back(bubble_scene.instance())
+	var first_bubble = bubble_scene.instance()
+	first_bubble.position = Vector2.ZERO;
+	bubbles.push_back(first_bubble)
+	
 	for _i in range(Consts.BubblesToSpawn - 1):
 		var bubble = bubble_scene.instance()
 		bubble.randomize_location()
