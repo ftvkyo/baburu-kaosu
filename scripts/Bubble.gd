@@ -1,25 +1,51 @@
 extends RigidBody2D
 
 
-export var color = Color(1.0, 1.0, 1.0)
+signal bubble_clicked(id)
+
+
+export var color = Color(1, 1, 1)
+export var selectedRingColor = Color(1, 1, 0)
+export var selected = false
+var id
 
 
 func _ready():
-	show()
+	get_node("BubbleCollision").shape.radius = Consts.BubbleRadius
 
 
 func _draw():
-	draw_arc(position, 50, 0, PI*2, 360, color)
+	if selected:
+		draw_arc($BubbleSprite.position, Consts.BubbleRadius + 10, 0, TAU, 360, selectedRingColor)
 
 
 func randomize_location():
-	position.x = Consts.GameArea.position.x + randf() * Consts.GameArea.size.x
-	position.y = Consts.GameArea.position.y + randf() * Consts.GameArea.size.y
+	var angle = randf() * TAU
+	var distance = randf() * (Consts.GameRadius - Consts.BubbleRadius)
+	
+	position = Vector2(cos(angle) * distance, sin(angle) * distance)
 
 
-func randomize_color():
-	pass
+func randomize_velocity():
+	var angle = randf() * TAU
+	var impulse = randf() * 1000
+
+	apply_impulse(Vector2(0, 0), Vector2(cos(angle) * impulse, sin(angle) * impulse))
 
 
 func randomize_resources():
 	pass
+
+
+func set_selected(s):
+	selected = s
+	update()
+
+
+func _on_Bubble_item_rect_changed():
+	update()
+
+
+func _on_Bubble_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+		emit_signal("bubble_clicked", id)
