@@ -49,3 +49,4 @@ func _on_Bubble_item_rect_changed():
 func _on_Bubble_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
 		emit_signal("bubble_clicked", id)
+		get_tree().set_input_as_handled()
