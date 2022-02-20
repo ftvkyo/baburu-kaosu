@@ -11,7 +11,7 @@ func _ready():
 	camera = get_node("/root/Main/PlayerCamera")
 
 
-func _process(delta):
+func _process(_delta):
 	text = ""
 	if debug_enabled:
 		text += "Camera: (%+.1f, %+.1f), zoom: %.2f\n" % [camera.position.x, camera.position.y, camera.zoom.x]
