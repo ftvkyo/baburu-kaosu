@@ -23,6 +23,6 @@ func _ready():
 
 
 func _on_bubble_clicked(id):
-	bubbles[current_bubble].set_selected(false)
-	bubbles[id].set_selected(true)
+	bubbles[current_bubble].selected = false
+	bubbles[id].selected = true
 	current_bubble = id

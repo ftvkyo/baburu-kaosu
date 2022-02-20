@@ -6,7 +6,7 @@ signal bubble_clicked(id)
 
 export var color = Color(1, 1, 1)
 export var selectedRingColor = Color(1, 1, 0)
-export var selected = false
+export var selected = false setget set_selected
 var id
 
 
